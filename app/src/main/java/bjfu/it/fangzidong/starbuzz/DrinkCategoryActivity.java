@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
 
 
 public class DrinkCategoryActivity extends AppCompatActivity {
@@ -24,20 +23,19 @@ public class DrinkCategoryActivity extends AppCompatActivity {
                 this, android.R.layout.simple_list_item_1, Drink.drinks
         );
 
-        ListView listView = findViewById(R.id.list_drinks);
-        listView.setAdapter(listAdapter);
+        ListView listDrinks = findViewById(R.id.list_drinks);
+        listDrinks.setAdapter(listAdapter);
 
         AdapterView.OnItemClickListener itemClickListener =
                 new OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        if(position == 0){
-                            Intent intent = new Intent(DrinkCategoryActivity.this,
-                                    DrinkActivity.class);
-                            intent.putExtra(DrinkActivity.EXTRA_DRINKID, (int) id);
-                            startActivity(intent);
-                        }
+                        Intent intent = new Intent(DrinkCategoryActivity.this,
+                                DrinkActivity.class);
+                        intent.putExtra(DrinkActivity.EXTRA_DRINKID, (int) id);
+                        startActivity(intent);
                     }
                 };
+        listDrinks.setOnItemClickListener(itemClickListener);
     }
 }
