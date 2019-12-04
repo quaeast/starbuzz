@@ -10,13 +10,15 @@ import android.widget.TextView;
 public class DrinkActivity extends AppCompatActivity {
 
     public static final String EXTRA_DRINKID = "drinkid";
-    int drinkid = getIntent().getIntExtra(EXTRA_DRINKID, 0);
-    Drink drink = Drink.drinks[drinkid];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink);
+
+        int drinkid = getIntent().getIntExtra(EXTRA_DRINKID, 0);
+        Drink drink = Drink.drinks[drinkid];
 
         ImageView photo = findViewById(R.id.photo);
         photo.setImageResource(drink.getImageResourceId());
