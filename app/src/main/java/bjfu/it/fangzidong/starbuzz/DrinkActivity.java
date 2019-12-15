@@ -2,6 +2,7 @@ package bjfu.it.fangzidong.starbuzz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,12 +32,11 @@ public class DrinkActivity extends AppCompatActivity {
             Cursor cursor = db.query(
                     "DRINK",
                     null,
-                    null,
-                    null,
+                    "_id = ?",
+                    new String[]{Integer.toString(drinkid)},
                     null, null,null);
             //
             cursor.moveToFirst();
-            cursor.move(drinkid);
             TextView name = findViewById(R.id.name);
             name.setText(cursor.getString(1));
 

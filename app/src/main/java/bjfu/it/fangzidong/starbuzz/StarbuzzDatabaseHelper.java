@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "starbuzz.db";
-    private static final int DB_VERSION = 3;
+    private static final int DB_VERSION = 1;
 
     public StarbuzzDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -25,7 +25,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE DRINK(_ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+        db.execSQL("CREATE TABLE DRINK(_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "NAME TEXT,"
                 + "DESCRIPTION TEXT,"
                 + "IMAGE_RESOURCE_ID INTEGER);"
