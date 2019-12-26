@@ -39,6 +39,19 @@ public class TopLevelActivity extends AppCompatActivity {
         db.close();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Cursor newCursor = db.query("DRINK",
+                new String[]{"_id","NAME"},
+                "FAVORITE=1",
+                null,null,null,null);
+        ListView listFavorites = findViewById(R.id.list_favourite);
+        CursorAdapter adapter = (CursorAdapter) listFavorites.getAdapter();
+        adapter.changeCursor(newCursor);
+        favoritesCursor = newCursor;
+    }
+
     private void setupOptionsListView() {
         AdapterView.OnItemClickListener itemClickListener =
                 new OnItemClickListener() {
