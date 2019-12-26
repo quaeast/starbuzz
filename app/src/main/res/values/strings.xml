@@ -6,5 +6,6 @@
         <item>Food</item>
         <item>Stores</item>
     </string-array>
-    <string name="favourite">\ \ Your favourite drinks</string>
+    <string name="favourite">\ \ Your favorite drinks</string>
+    <string name="favourite_check_box" >Favorite</string>
 </resources>

@@ -32,6 +32,13 @@ public class TopLevelActivity extends AppCompatActivity {
         setupFavoritesListView();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        favoritesCursor.close();
+        db.close();
+    }
+
     private void setupOptionsListView() {
         AdapterView.OnItemClickListener itemClickListener =
                 new OnItemClickListener() {
@@ -56,7 +63,7 @@ public class TopLevelActivity extends AppCompatActivity {
             db = starbuzzDatabaseHelper.getReadableDatabase();
             favoritesCursor = db.query("DRINK",
                     new String[]{"_id","NAME"},
-                    "FAVOURITE=1",
+                    "FAVORITE=1",
                     null,null,null,null);
             CursorAdapter favoriteAdapter =
                     new SimpleCursorAdapter(TopLevelActivity.this,
