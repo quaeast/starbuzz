@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "starbuzz.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     public StarbuzzDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -30,7 +30,8 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
                 + "DESCRIPTION TEXT,"
                 + "IMAGE_RESOURCE_ID INTEGER);"
         );
-
+//        v2
+        db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
         insertDrink(db,"Latte", "Espresso and steamed milk", R.drawable.latte);
         insertDrink(db,"Cappuccino", "Espresso, hot milk and steamed-milk foam", R.drawable.cappuccino);
         insertDrink(db,"Filter", "Our best drip coffee", R.drawable.filter);
@@ -38,7 +39,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.d("hahaha", "old version"+oldVersion);
+        Log.d("haha", "old version"+oldVersion);
         if(oldVersion<=1){
             db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
         }else if(oldVersion<=2){
