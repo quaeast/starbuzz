@@ -23,7 +23,28 @@
         <ListView
             android:id="@+id/list_options"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:entries="@array/options" />
+            android:layout_height="wrap_content"
+            android:entries="@array/options">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/favourite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/favourite"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/list_favourite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
